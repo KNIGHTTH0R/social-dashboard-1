@@ -1,0 +1,77 @@
+body {
+	font-family: Ubuntu, Calibri, Arial, sans-serif;
+	width: 790px;
+	margin: auto;
+}
+
+header {
+}
+
+h1#logo {
+	text-indent: -9999px;
+	background: url("img/Blacknut_logo.png") center no-repeat;
+	width: 651px;
+	height: 230px;
+	margin: auto;
+}
+
+header p {
+	font-weight: bold;
+	font-size: 2em;
+	text-align: center;
+	line-height: 0.5em;
+}
+
+section {
+	margin-top: 80px;
+	clear: both;
+}
+section h2 {
+	background-color: #53c4c7;
+	color: white;
+	padding: 5px;
+}
+
+section#facebook {
+	background: url(img/facebook.png) center 50px no-repeat;
+	height: 600px;
+}
+
+section#twitter {
+	background: url(img/twitter.png) center 50px no-repeat;
+	height: 600px;
+}
+
+section#linkedin {
+	background: url(img/linkedin.png) center 50px no-repeat;
+	height: 600px;
+}
+
+section dt {
+	font-weight: bold;
+	float: left;
+	width: 530px;
+}
+
+section dt span {
+	font-size: 5em;
+	color: #00006c;
+}
+
+section dd {
+	font-size: 2em;
+	padding-top: 40px;
+	height: 100px;
+}
+
+section dl.audience {
+	display: block;
+	width: 300px;
+	float: left;
+}
+
+section dl.countries {
+	display: block;
+	width: 300px;
+	float: right;
+}
