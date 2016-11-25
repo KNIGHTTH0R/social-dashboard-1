@@ -3,9 +3,12 @@
     <head>
         <meta charset="utf-8">
         <title>Kinto Social Dashboard</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="static/styles.css">
     </head>
     <body>
+        <div id="elm">
+        </div>
+<!--
         <header>
             <h1 id="logo">Blacknut</h1>
             <p>Social Media Metrics</p>
@@ -89,5 +92,8 @@
                 <dd>8,6%</dd>
             </dl>
         </section>        
+        -->
+        <script src="elm.js"></script>
+        <script>Elm.Main.embed(document.getElementById("elm"));</script>
     </body>
 </html>

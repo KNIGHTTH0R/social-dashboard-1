@@ -235,10 +235,12 @@
     },
     "twitter": {
       "countries_audience": {
-        "ui:order": [
-          "name",
-          "reach"
-        ]
+        "items": {
+          "ui:order": [
+            "name",
+            "reach"
+          ]
+        }
       },
       "analytics": {
         "ui:order": [
@@ -277,10 +279,12 @@
     ],
     "linkedin": {
       "professional_status": {
-        "ui:order": [
-          "name",
-          "reach"
-        ]
+        "items": {
+          "ui:order": [
+            "name",
+            "reach"
+          ]
+        }
       },
       "ui:order": [
         "followers",
