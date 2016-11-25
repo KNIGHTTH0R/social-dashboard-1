@@ -1,6 +1,6 @@
 {
   "displayFields": [
-    "begin_date", "end_date", "facebook.likes", "twitter.followers", "linkedin.followers"
+    "begin_date", "end_date", "facebook.likes", "twitter.analytics.followers", "linkedin.followers"
   ],
   "schema": {
     "title": "Monthly Analytics",
