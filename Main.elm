@@ -24,6 +24,8 @@ type alias Model =
     { begin_date : String
     , end_date : String
     , facebook : Facebook
+    , twitter : Twitter
+    , linkedin : LinkedIn
     }
 
 
@@ -32,6 +34,39 @@ type alias Facebook =
     , views : Int
     , posts : Int
     , interactions : Int
+    }
+
+
+type alias Twitter =
+    { analytics : TwitterAnalytics
+    , gender_audience : TwitterGenderAudience
+    , countries_audience : List Reach
+    }
+
+
+type alias TwitterAnalytics =
+    { followers : Int
+    , links_clicks : Int
+    , likes : Int
+    , retweets : Int
+    }
+
+
+type alias LinkedIn =
+    { followers : Int
+    , professional_status : List Reach
+    }
+
+
+type alias Reach =
+    { name : String
+    , reach : Float
+    }
+
+
+type alias TwitterGenderAudience =
+    { men : Int
+    , woman : Int
     }
 
 
@@ -53,6 +88,8 @@ modelDecoder =
         |> required "begin_date" string
         |> required "end_date" string
         |> required "facebook" facebookDecoder
+        |> required "twitter" twitterDecoder
+        |> required "linkedin" linkedInDecoder
 
 
 facebookDecoder : Decoder Facebook
@@ -64,6 +101,44 @@ facebookDecoder =
         |> required "interactions" int
 
 
+twitterDecoder : Decoder Twitter
+twitterDecoder =
+    decode Twitter
+        |> required "analytics" twitterAnalyticsDecoder
+        |> required "gender_audience" twitterGenderDecoder
+        |> required "countries_audience" (list reachDecoder)
+
+
+twitterAnalyticsDecoder : Decoder TwitterAnalytics
+twitterAnalyticsDecoder =
+    decode TwitterAnalytics
+        |> required "followers" int
+        |> required "links_clicks" int
+        |> required "likes" int
+        |> required "retweets" int
+
+
+twitterGenderDecoder : Decoder TwitterGenderAudience
+twitterGenderDecoder =
+    decode TwitterGenderAudience
+        |> required "men" int
+        |> required "woman" int
+
+
+linkedInDecoder : Decoder LinkedIn
+linkedInDecoder =
+    decode LinkedIn
+        |> required "followers" int
+        |> required "professional_status" (list reachDecoder)
+
+
+reachDecoder : Decoder Reach
+reachDecoder =
+    decode Reach
+        |> required "name" string
+        |> required "reach" float
+
+
 init : ( Model, Cmd Msg )
 init =
     ( Model "unknown"
@@ -72,6 +147,18 @@ init =
         , views = 0
         , posts = 0
         , interactions = 0
+        }
+        { analytics =
+            { followers = 0
+            , links_clicks = 0
+            , likes = 0
+            , retweets = 0
+            }
+        , gender_audience = { men = 0, woman = 0 }
+        , countries_audience = []
+        }
+        { followers = 0
+        , professional_status = []
         }
     , getData
     )
@@ -134,6 +221,61 @@ view model =
                     ]
                 , Html.dd [ Html.Attributes.class "down" ]
                     [ Html.text "58" ]
+                ]
+            ]
+        , Html.section [ Html.Attributes.id "twitter" ]
+            [ Html.h2 [] [ Html.text "Twitter analytics" ]
+            , Html.dl [ Html.Attributes.class "metrics" ]
+                [ Html.dt []
+                    [ Html.span [] [ Html.text (toString model.twitter.analytics.followers) ]
+                    , Html.text "followers"
+                    ]
+                , Html.dd [ Html.Attributes.class "up" ]
+                    [ Html.text "65" ]
+                , Html.dt []
+                    [ Html.span [] [ Html.text (toString model.twitter.analytics.links_clicks) ]
+                    , Html.text "clicks on links"
+                    ]
+                , Html.dd [ Html.Attributes.class "stalled" ]
+                    [ Html.text "--,-" ]
+                , Html.dt []
+                    [ Html.span [] [ Html.text (toString model.twitter.analytics.retweets) ]
+                    , Html.text "retweets"
+                    ]
+                , Html.dd [ Html.Attributes.class "stalled" ]
+                    [ Html.text "--,-" ]
+                , Html.dt []
+                    [ Html.span [] [ Html.text (toString model.twitter.analytics.likes) ]
+                    , Html.text "likes"
+                    ]
+                , Html.dd [ Html.Attributes.class "stalled" ]
+                    [ Html.text "--,-" ]
+                ]
+            , Html.div [ Html.Attributes.class "engagement" ]
+                [ Html.span []
+                    [ Html.text "1,8%" ]
+                , Html.text " engagement rate"
+                ]
+            , Html.dl [ Html.Attributes.class "audience" ]
+                [ Html.dt []
+                    [ Html.text "Men" ]
+                , Html.dd []
+                    [ Html.text (toString model.twitter.gender_audience.men) ]
+                , Html.dt []
+                    [ Html.text "Woman" ]
+                , Html.dd []
+                    [ Html.text (toString model.twitter.gender_audience.woman) ]
+                ]
+            ]
+        , Html.section [ Html.Attributes.id "linkedin" ]
+            [ Html.h2 [] [ Html.text "LinkedIn analytics" ]
+            , Html.dl [ Html.Attributes.class "metrics" ]
+                [ Html.dt []
+                    [ Html.span [] [ Html.text (toString model.linkedin.followers) ]
+                    , Html.text "followers"
+                    ]
+                , Html.dd [ Html.Attributes.class "up" ]
+                    [ Html.text "100" ]
                 ]
             ]
         ]
