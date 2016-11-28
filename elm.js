@@ -9671,7 +9671,7 @@ var _user$project$Main$update = F2(
 			return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 		}
 	});
-var _user$project$Main$uri = 'http://demo-kinto.scalingo.io/v1/buckets/11d2d8f1-20a2-0625-79fb-5de483ba5b0b/collections/metrics/records?_limit=1&_sort=-end_date,-begin_date';
+var _user$project$Main$uri = 'https://demo-kinto.scalingo.io/v1/buckets/11d2d8f1-20a2-0625-79fb-5de483ba5b0b/collections/metrics/records?_limit=1&_sort=-end_date,-begin_date';
 var _user$project$Main$Data = function (a) {
 	return {data: a};
 };
