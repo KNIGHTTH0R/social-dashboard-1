@@ -1,6 +1,6 @@
 module Main exposing (..)
 
-import Json.Decode exposing (int, string, float, Decoder)
+import Json.Decode exposing (int, string, float, list, Decoder)
 import Json.Decode.Pipeline exposing (decode, required, optional, hardcoded)
 import Html
 import Html.Attributes
@@ -8,11 +8,16 @@ import Http
 
 
 uri =
-    "http://demo-kinto.scalingo.io/v1/buckets/11d2d8f1-20a2-0625-79fb-5de483ba5b0b/collections/metrics/records"
+    "http://demo-kinto.scalingo.io/v1/buckets/11d2d8f1-20a2-0625-79fb-5de483ba5b0b/collections/metrics/records?_limit=1&_sort=-end_date,-begin_date"
 
 
 type Msg
-    = UpdateModel (Result Http.Error Model)
+    = UpdateModel (Result Http.Error Data)
+
+
+type alias Data =
+    { data : List Model
+    }
 
 
 type alias Model =
@@ -33,7 +38,13 @@ type alias Facebook =
 getData : Cmd Msg
 getData =
     Http.send UpdateModel <|
-        Http.get uri modelDecoder
+        Http.get uri listDecoder
+
+
+listDecoder : Decoder Data
+listDecoder =
+    decode Data
+        |> required "data" (list modelDecoder)
 
 
 modelDecoder : Decoder Model
@@ -71,8 +82,13 @@ update msg model =
     case msg of
         UpdateModel results ->
             case (Debug.log "results:" results) of
-                Ok new ->
-                    ( new, Cmd.none )
+                Ok r ->
+                    case (List.head r.data) of
+                        Just new ->
+                            ( new, Cmd.none )
+
+                        Nothing ->
+                            ( model, Cmd.none )
 
                 Err _ ->
                     ( model, Cmd.none )
