@@ -266,6 +266,14 @@ view model =
                 , Html.dd []
                     [ Html.text (toString model.twitter.gender_audience.woman) ]
                 ]
+            , model.twitter.countries_audience
+                |> List.concatMap
+                    (\l ->
+                        [ Html.dt [] [ Html.text l.name ]
+                        , Html.dd [] [ Html.text (toString l.reach) ]
+                        ]
+                    )
+                |> Html.dl [ Html.Attributes.class "countries" ]
             ]
         , Html.section [ Html.Attributes.id "linkedin" ]
             [ Html.h2 [] [ Html.text "LinkedIn analytics" ]
@@ -277,6 +285,14 @@ view model =
                 , Html.dd [ Html.Attributes.class "up" ]
                     [ Html.text "100" ]
                 ]
+            , model.linkedin.professional_status
+                |> List.concatMap
+                    (\l ->
+                        [ Html.dt [] [ Html.text l.name ]
+                        , Html.dd [] [ Html.text (toString l.reach) ]
+                        ]
+                    )
+                |> Html.dl [ Html.Attributes.class "professional-status" ]
             ]
         ]
 
