@@ -81,7 +81,7 @@ html, body {
 .chart:nth-child(2) {
   color: #00BBD6;
 }
-.chart:nth-child(3) {
+.chart:nth-child(2) {
   color: #BA65C9;
 }
 .chart:nth-child(4) {
@@ -104,11 +104,14 @@ _:-ms-input-placeholder, :root .graph {
   max-height: 300px;
 }
 /* TODO end */
-.graph:nth-child(1) {
-  color: #00b9d8;
+.graph.audience {
+  color: #35bcbf;
 }
-.graph:nth-child(2) {
-  color: #d9006e;
+.graph.gender {
+  color: #BA65C9;
+}
+.graph.status {
+  color: #EF3C79;
 }
 
 .cards {
