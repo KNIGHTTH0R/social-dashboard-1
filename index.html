@@ -1,99 +1,368 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Kinto Social Dashboard</title>
-        <link rel="stylesheet" href="static/styles.css">
-    </head>
-    <body>
-        <div id="elm">
-        </div>
-<!--
-        <header>
-            <h1 id="logo">Blacknut</h1>
-            <p>Social Media Metrics</p>
-            <p>From October 4th to November 4th of 2016</p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Social Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Kinto Social Dashboard</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.cyan-light_blue.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <header class="header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Kinto Social Dashboard <small>— From November 18th, 2016 to November 25th, 2016</small></span>
+      </header>
+      <div class="drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <header class="drawer-header">
+          <img src="images/blacknut.png" class="logo">
         </header>
+        <nav class="navigation mdl-navigation mdl-color--blue-grey-800">
+          <a class="mdl-navigation__link" href="http://www.blacknut.com/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+          <a class="mdl-navigation__link" href="https://www.facebook.com/blacknutgaming"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">face</i>Facebook</a>
+          <a class="mdl-navigation__link" href="https://twitter.com/blacknut_"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">timeline</i>Twtter</a>
+          <a class="mdl-navigation__link" href="http://www.blacknut.com/join-the-game/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">work</i>Linked In</a>
+          <a class="mdl-navigation__link" href="https://demo-kinto.scalingo.io/v1/admin/#/buckets/default/collections/metrics/records"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">settings</i>Admin</a>
+          <div class="mdl-layout-spacer"></div>
+          <a class="mdl-navigation__link" href="http://www.blacknut.com/contact/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+        </nav>
+      </div>
+      <main class="mdl-layout__content mdl-color--grey-100">
+          <div class="mdl-grid content">
+              <h2 class="mdl-cell mdl-cell--12-col mdl-grid">Facebook</h2>
+              <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid" title="People who likes the Facebook page">
+                  <div class="title mdl-cell mdl-cell--12-col mdl-grid">
+                      Likes on the Facebook page
+                  </div>
+                  <div class="likes mdl-cell mdl-cell--4-col mdl-grid">
+                      <i class="mdl-color-text--blue-grey-400 material-icons">trending_up</i>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      <span style="font-size: 2em;">108</span>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      +1.9%
+                  </div>
+              </div>
+              <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid" title="People who have seen any content associated with our page">
+                  <div class="title mdl-cell mdl-cell--12-col mdl-grid">
+                      Have seen content from us
+                  </div>
+                  <div class="likes mdl-cell mdl-cell--4-col mdl-grid">
+                      <i class="mdl-color-text--blue-grey-400 material-icons">trending_down</i>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      <span style="font-size: 2em;">2001</span>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      -0.9%
+                  </div>
 
-        <section id="facebook">
-            <h2>Facebook analytics</h2>
-            <dl class="metrics">
-                <dt><span>89</span> people who have liked our page</dt>
-                <dd class="up">+117%</dd>
+              </div>
+              <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid" title="Number of interactions: shares, likes">
+                  <div class="title mdl-cell mdl-cell--12-col mdl-grid">
+                  Number of engagement
+                  </div>
+                  <div class="title mdl-cell mdl-cell--4-col mdl-grid">
+                      <i class="mdl-color-text--blue-grey-400 material-icons">trending_down</i>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      <span style="font-size: 2em;">1</span>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      -97%
+                  </div>
 
-                <dt><span class="number">2441</span> people who have seen any content associated with our page</dt>
-                <dd class="up">+289%</dd>
+              </div>
+              <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid" title="Number of interactions: shares, likes">
+                  <div class="title mdl-cell mdl-cell--12-col mdl-grid">
+                  Number of posts
+                  </div>
+                  <div class="likes mdl-cell mdl-cell--4-col mdl-grid">
+                      <i class="mdl-color-text--blue-grey-400 material-icons">trending_up</i>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      <span style="font-size: 2em;">10</span>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      +333%
+                  </div>
 
-                <dt><span class="number">10</span> number of Facebook posts</dt>
-                <dd class="up">+100%</dd>
+              </div>
+              <h2 class="mdl-cell mdl-cell--12-col mdl-grid">Twitter</h2>
+              <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid" title="People who likes the Facebook page">
+                  <div class="title mdl-cell mdl-cell--12-col mdl-grid">
+                      Followers
+                  </div>
+                  <div class="likes mdl-cell mdl-cell--4-col mdl-grid">
+                      <i class="mdl-color-text--blue-grey-400 material-icons">trending_up</i>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      <span style="font-size: 2em;">262</span>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      +3.2%
+                  </div>
+              </div>
+              <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid" title="People who have seen any content associated with our page">
+                  <div class="title mdl-cell mdl-cell--12-col mdl-grid">
+                      Retweets
+                  </div>
+                  <div class="likes mdl-cell mdl-cell--4-col mdl-grid">
+                      <i class="mdl-color-text--blue-grey-400 material-icons">trending_up</i>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      <span style="font-size: 2em;">8</span>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      +14.3%
+                  </div>
 
-                <dt><span class="number">21</span> number of engagements: share, likes</dt>
-                <dd class="down">-58%</dd>
-            </dl>
-        </section>
-        
-        <section id="twitter">
-            <h2>Twitter analytics</h2>
-            <dl class="metrics">
-                <dt><span>232</span> followers</dt>
-                <dd class="up">+65%</dd>
+              </div>
+              <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid" title="Number of interactions: shares, likes">
+                  <div class="title mdl-cell mdl-cell--12-col mdl-grid">
+                  Likes
+                  </div>
+                  <div class="title mdl-cell mdl-cell--4-col mdl-grid">
+                      <i class="mdl-color-text--blue-grey-400 material-icons">trending_up</i>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      <span style="font-size: 2em;">11</span>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      +22%
+                  </div>
 
-                <dt><span class="number">129</span> clicks on links</dt>
-                <dd class="stalled">--,- %</dd>
+              </div>
+              <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--3-col mdl-grid" title="Number of interactions: shares, likes">
+                  <div class="title mdl-cell mdl-cell--12-col mdl-grid">
+                  Clicks
+                  </div>
+                  <div class="likes mdl-cell mdl-cell--4-col mdl-grid">
+                      <i class="mdl-color-text--blue-grey-400 material-icons">trending_down</i>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      <span style="font-size: 2em;">16</span>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      -27%
+                  </div>
 
-                <dt><span class="number">141</span> retweets</dt>
-                <dd class="stalled">--,- %</dd>
+              </div>
 
-                <dt><span class="number">177</span> likes</dt>
-                <dd class="stalled">--,- %</dd>
-            </dl>
-            <div class="engagement"><span class="number">1,8%</span> engagement rate</div>
-            <dl class="audience">
-                <dt>Men</dt>
-                <dd>83%</dd>
+              <div class="graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--6-col">
+                  <div class="title mdl-cell mdl-cell--12-col mdl-grid">
+                      Audience
+                  </div>
 
-                <dt>Women</dt>
-                <dd>17%</dd>
+            <svg fill="currentColor" viewBox="0 0 500 250" class="graph audience">
+              <use xlink:href="#chart_audience" />
+            </svg>
+            </div>
+              <div class="graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--6-col">
+            <div class="title mdl-cell mdl-cell--12-col mdl-grid">
+                Gender
+            </div>
+            <svg fill="currentColor" viewBox="0 0 500 250" class="graph gender">
+              <use xlink:href="#chart_gender" />
+            </svg>
+            </div>
+              <div class="cards mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+              <h2 class="mdl-cell mdl-cell--12-col mdl-grid">Linked In</h2>
+              <div class="mdl-cell mdl-cell--4-col mdl-grid">
+              <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" title="People following the Linked In page">
+                  <div class="title mdl-cell mdl-cell--12-col mdl-grid">
+                      Followers
+                  </div>
+                  <div class="likes mdl-cell mdl-cell--4-col mdl-grid">
+                      <i class="mdl-color-text--blue-grey-400 material-icons">trending_flat</i>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      <span style="font-size: 2em;">35</span>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      +0%
+                  </div>
+              </div>
 
-            </dl>
-            <dl class="countries">
-                <dt>France</dt>
-                <dd>82%</dd>
+              <div class="mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" title="Number of posts published on the Linked In page">
+                  <div class="title mdl-cell mdl-cell--12-col mdl-grid">
+                      Number of posts
+                  </div>
+                  <div class="likes mdl-cell mdl-cell--4-col mdl-grid">
+                      <i class="mdl-color-text--blue-grey-400 material-icons">trending_flat</i>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      <span style="font-size: 2em;">10</span>
+                  </div>
+                  <div class="mdl-cell mdl-cell--4-col mdl-grid">
+                      +0%
+                  </div>
+              </div>
+              </div>
+              
+              <div class="graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+                  <div class="title mdl-cell mdl-cell--12-col mdl-grid">
+                      Professionnal status
+                  </div>
 
-                <dt>USA</dt>
-                <dd>4%</dd>
+            <svg fill="currentColor" viewBox="0 0 500 250" class="graph status">
+              <use xlink:href="#chart_status" />
+            </svg>
+            </div>
 
-                <dt>UK</dt>
-                <dd>4%</dd>
-            </dl>
-        </section>
+          </div>
+        </div>
+      </main>
+    </div>
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="position: fixed; left: -1000px; height: -1000px;">
+        <defs>
+          <mask id="piemask" maskContentUnits="objectBoundingBox">
+            <circle cx=0.5 cy=0.5 r=0.49 fill="white" />
+            <circle cx=0.5 cy=0.5 r=0.40 fill="black" />
+          </mask>
+          <g id="piechart">
+            <circle cx=0.5 cy=0.5 r=0.5 />
+            <path d="M 0.5 0.5 0.5 0 A 0.5 0.5 0 0 1 0.95 0.28 z" stroke="none" fill="rgba(255, 255, 255, 0.75)" />
+          </g>
+        </defs>
+      </svg>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 250" style="position: fixed; left: -1000px; height: -1000px;">
+        <defs>
+          <g id="chart_audience">
+            <g id="Gridlines">
+              <line fill="#888888" stroke="#888888" stroke-miterlimit="10" x1="0" y1="27.3" x2="468.3" y2="27.3" />
+              <line fill="#888888" stroke="#DDDDDD" stroke-miterlimit="10" x1="0" y1="47.3" x2="468.3" y2="47.3" />
+              <line fill="#888888" stroke="#888888" stroke-miterlimit="10" x1="0" y1="66.7" x2="468.3" y2="66.7" />
+              <line fill="#888888" stroke="#DDDDDD" stroke-miterlimit="10" x1="0" y1="86.3" x2="468.3" y2="86.3" />
+              <line fill="#888888" stroke="#888888" stroke-miterlimit="10" x1="0" y1="105.3" x2="468.3" y2="105.3" />
+              <line fill="#888888" stroke="#DDDDDD" stroke-miterlimit="10" x1="0" y1="125.3" x2="468.3" y2="125.3" />
+              <line fill="#888888" stroke="#888888" stroke-miterlimit="10" x1="0" y1="144.7" x2="468.3" y2="144.7" />
+              <line fill="#888888" stroke="#DDDDDD" stroke-miterlimit="10" x1="0" y1="164.3" x2="468.3" y2="164.3" />
+              <line fill="#888888" stroke="#888888" stroke-miterlimit="10" x1="0" y1="184.3" x2="468.3" y2="184.3" />
+              <line fill="#888888" stroke="#DDDDDD" stroke-miterlimit="10" x1="0" y1="204.3" x2="468.3" y2="204.3" />
+            </g>
+            <g id="Numbers">
+              <text transform="matrix(1 0 0 1 485 29.3333)" fill="#888888" font-family="'Roboto'" font-size="14">100</text>
+              <text transform="matrix(1 0 0 1 485 69)" fill="#888888" font-family="'Roboto'" font-size="14">80</text>
+              <text transform="matrix(1 0 0 1 485 109.3333)" fill="#888888" font-family="'Roboto'" font-size="14">60</text>
+              <text transform="matrix(1 0 0 1 485 149)" fill="#888888" font-family="'Roboto'" font-size="14">40</text>
+              <text transform="matrix(1 0 0 1 485 188.3333)" fill="#888888" font-family="'Roboto'" font-size="14">20</text>
+              <text transform="matrix(1 0 0 1 37 249.0003)" fill="#888888" font-family="'Roboto'" font-size="14">France</text>
+              <text transform="matrix(1 0 0 1 159 249.0003)" fill="#888888" font-family="'Roboto'" font-size="14">USA</text>
+              <text transform="matrix(1 0 0 1 280 249.0003)" fill="#888888" font-family="'Roboto'" font-size="14">UK</text>
+              <text transform="matrix(1 0 0 1 360 249.0003)" fill="#888888" font-family="'Roboto'" font-size="14">Others countries</text>
+            </g>
+            <g id="Layer_4">
+              <polygon stroke-miterlimit="10" points="469.3,222.7
+                       1,222.7  28,222.7 28,56.61 88,56.61 88,222.7
+                 144,222.7  144,215 204,215  204,222.7
+                 260,222.7  260,215 320,215  320,222.7
+                 380,222.7  380,205  440,204 440,222.7"/>
+            </g>
+          </g>
+        </defs>
+      </svg>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 250" style="position: fixed; left: -1000px; height: -1000px;">
+        <defs>
+          <g id="chart_gender">
+            <g id="Gridlines">
+              <line fill="#888888" stroke="#888888" stroke-miterlimit="10" x1="0" y1="27.3" x2="468.3" y2="27.3" />
+              <line fill="#888888" stroke="#DDDDDD" stroke-miterlimit="10" x1="0" y1="47.3" x2="468.3" y2="47.3" />
+              <line fill="#888888" stroke="#888888" stroke-miterlimit="10" x1="0" y1="66.7" x2="468.3" y2="66.7" />
+              <line fill="#888888" stroke="#DDDDDD" stroke-miterlimit="10" x1="0" y1="86.3" x2="468.3" y2="86.3" />
+              <line fill="#888888" stroke="#888888" stroke-miterlimit="10" x1="0" y1="105.3" x2="468.3" y2="105.3" />
+              <line fill="#888888" stroke="#DDDDDD" stroke-miterlimit="10" x1="0" y1="125.3" x2="468.3" y2="125.3" />
+              <line fill="#888888" stroke="#888888" stroke-miterlimit="10" x1="0" y1="144.7" x2="468.3" y2="144.7" />
+              <line fill="#888888" stroke="#DDDDDD" stroke-miterlimit="10" x1="0" y1="164.3" x2="468.3" y2="164.3" />
+              <line fill="#888888" stroke="#888888" stroke-miterlimit="10" x1="0" y1="184.3" x2="468.3" y2="184.3" />
+              <line fill="#888888" stroke="#DDDDDD" stroke-miterlimit="10" x1="0" y1="204.3" x2="468.3" y2="204.3" />
+            </g>
+            <g id="Numbers">
+              <text transform="matrix(1 0 0 1 485 29.3333)" fill="#888888" font-family="'Roboto'" font-size="14">100</text>
+              <text transform="matrix(1 0 0 1 485 69)" fill="#888888" font-family="'Roboto'" font-size="14">80</text>
+              <text transform="matrix(1 0 0 1 485 109.3333)" fill="#888888" font-family="'Roboto'" font-size="14">60</text>
+              <text transform="matrix(1 0 0 1 485 149)" fill="#888888" font-family="'Roboto'" font-size="14">40</text>
+              <text transform="matrix(1 0 0 1 485 188.3333)" fill="#888888" font-family="'Roboto'" font-size="14">20</text>
+              <text transform="matrix(1 0 0 1 103 249.0003)" fill="#888888" font-family="'Roboto'" font-size="14">Men</text>
+              <text transform="matrix(1 0 0 1 333 249.0003)" fill="#888888" font-family="'Roboto'" font-size="14">Woman</text>
+            </g>
+            <g id="Layer_4">
+              <polygon stroke-miterlimit="10" points="469.3,222.7
+                       1,222.7 78,222.7    78,56.61 156,56.61   156,222.7
+                 312,222.7  312,210 400,210  400,222.7"/>
+            </g>
+          </g>
+        </defs>
+      </svg>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 250" style="position: fixed; left: -1000px; height: -1000px;">
+        <defs>
+          <g id="chart_status">
+            <g id="Gridlines">
+              <line fill="#888888" stroke="#888888" stroke-miterlimit="10" x1="0" y1="27.3" x2="468.3" y2="27.3" />
+              <line fill="#888888" stroke="#DDDDDD" stroke-miterlimit="10" x1="0" y1="47.3" x2="468.3" y2="47.3" />
+              <line fill="#888888" stroke="#888888" stroke-miterlimit="10" x1="0" y1="66.7" x2="468.3" y2="66.7" />
+              <line fill="#888888" stroke="#DDDDDD" stroke-miterlimit="10" x1="0" y1="86.3" x2="468.3" y2="86.3" />
+              <line fill="#888888" stroke="#888888" stroke-miterlimit="10" x1="0" y1="105.3" x2="468.3" y2="105.3" />
+              <line fill="#888888" stroke="#DDDDDD" stroke-miterlimit="10" x1="0" y1="125.3" x2="468.3" y2="125.3" />
+              <line fill="#888888" stroke="#888888" stroke-miterlimit="10" x1="0" y1="144.7" x2="468.3" y2="144.7" />
+              <line fill="#888888" stroke="#DDDDDD" stroke-miterlimit="10" x1="0" y1="164.3" x2="468.3" y2="164.3" />
+              <line fill="#888888" stroke="#888888" stroke-miterlimit="10" x1="0" y1="184.3" x2="468.3" y2="184.3" />
+              <line fill="#888888" stroke="#DDDDDD" stroke-miterlimit="10" x1="0" y1="204.3" x2="468.3" y2="204.3" />
+            </g>
+            <g id="Numbers">
+              <text transform="matrix(1 0 0 1 485 29.3333)" fill="#888888" font-family="'Roboto'" font-size="14">100</text>
+              <text transform="matrix(1 0 0 1 485 69)" fill="#888888" font-family="'Roboto'" font-size="14">80</text>
+              <text transform="matrix(1 0 0 1 485 109.3333)" fill="#888888" font-family="'Roboto'" font-size="14">60</text>
+              <text transform="matrix(1 0 0 1 485 149)" fill="#888888" font-family="'Roboto'" font-size="14">40</text>
+              <text transform="matrix(1 0 0 1 485 188.3333)" fill="#888888" font-family="'Roboto'" font-size="14">20</text>
+              <text transform="matrix(1 0 0 1 28 249.0003)" fill="#888888" font-family="'Roboto'" font-size="14">Senior</text>
+              <text transform="matrix(1 0 0 1 115 249.0003)" fill="#888888" font-family="'Roboto'" font-size="14">Manager</text>
+              <text transform="matrix(1 0 0 1 215 249.0003)" fill="#888888" font-family="'Roboto'" font-size="14">Junior</text>
+              <text transform="matrix(1 0 0 1 308 249.0003)" fill="#888888" font-family="'Roboto'" font-size="14">Owner</text>
+              <text transform="matrix(1 0 0 1 408 249.0003)" fill="#888888" font-family="'Roboto'" font-size="14">CEO</text>
+            </g>
+            <g id="Layer_4">
+              <polygon stroke-miterlimit="10" points="469.3,222.7
+                       1,222.7  22,222.7 22,145.32 72,145.32 72,222.7
+                 116,222.7  116,185.97 166,185.97  166,222.7
+                 210,222.7  210,194.17 260,194.17  260,222.7
+                 304,222.7  304,198.275  354,198.275 354,222.7
+                 398,222.7  398,206.48 448,206.48  448,222.7"/>
+            </g>
+          </g>
+        </defs>
+      </svg>
 
-        <section id="linkedin">
-            <h2>LinkedIn analytics</h2>
-            <dl class="metrics">
-                <dt><span>30</span> followers</dt>
-                <dd class="up">+100%</dd>
-            </dl>
-
-            <dl class="professionnal-status">
-                <dt>Senior</dt>
-                <dd>37,1%</dd>
-
-                <dt>Manager</dt>
-                <dd>25,7%</dd>
-
-                <dt>Junior gratuate</dt>
-                <dd>14,3%</dd>
-
-                <dt>Company owner</dt>
-                <dd>11,4%</dd>
-
-                <dt>CEO</dt>
-                <dd>8,6%</dd>
-            </dl>
-        </section>        
-        -->
-        <script src="elm.js"></script>
-        <script>Elm.Main.embed(document.getElementById("elm"));</script>
-    </body>
+      <a href="https://github.com/natim/social-dashboard/" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">View Source</a>
+    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+  </body>
 </html>
